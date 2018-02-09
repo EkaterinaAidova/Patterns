@@ -9,8 +9,7 @@ using namespace std;
 
 int main()
 {
-    vector<Duck*> decducks;
-    vector <Duck*> normducks;
+    vector <Duck*> ducks;
     AbstractDuckFactory* decDucksFactory = new DecorativeDuckFactory();
     AbstractDuckFactory* normDucksFactory = new DuckFactory();
 
@@ -20,31 +19,27 @@ int main()
         switch (i%3)
 		{
 		case 0:
-            decducks.push_back(decDucksFactory->createRealDuck());
-            normducks.push_back(normDucksFactory->createRealDuck());
+            ducks.push_back(decDucksFactory->createRealDuck());
+            ducks.push_back(normDucksFactory->createRealDuck());
 			break;
 		case 1:
-            decducks.push_back(decDucksFactory->createWoodenDuck());
-            normducks.push_back(normDucksFactory->createWoodenDuck());
+            ducks.push_back(decDucksFactory->createWoodenDuck());
+            ducks.push_back(normDucksFactory->createWoodenDuck());
 			break;
 		case 2:
-            decducks.push_back(decDucksFactory->createRubberDuck());
-            normducks.push_back(normDucksFactory->createRubberDuck());
+            ducks.push_back(decDucksFactory->createRubberDuck());
+            ducks.push_back(normDucksFactory->createRubberDuck());
 			break;
 		}
 	}
-    for (auto duck : normducks)
-	{
-        duck->useStrategy();
 
-    }
-    for (auto duck : decducks)
+    for (auto duck : ducks)
     {
         duck->useStrategy();
 
     }
     int krya=0;
-    for (auto duck : decducks)
+    for (auto duck : ducks)
     {
         auto d = dynamic_cast<DecorativeDuck*>(duck);
         if (d!=nullptr)
