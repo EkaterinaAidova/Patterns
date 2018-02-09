@@ -13,7 +13,7 @@ using namespace std;
 
 int main()
 {
-    vector<DecorativeDuck*> ducks;
+    vector<Duck*> ducks;
 	for (int i = 0; i < 10; i++)
 	{
         switch (i%3)
@@ -37,9 +37,13 @@ int main()
     int krya=0;
     for (auto duck : ducks)
     {
-        krya += duck->getCount();
+        auto d = dynamic_cast<DecorativeDuck*>(duck);
+        if (d != nullptr)
+        {
+            krya += d->getCount();
+        }
 
     }
-    std::cout << krya << std::endl;
+    std::cout << "Count of quaks = " << krya << std::endl;
 
 }
