@@ -11,8 +11,12 @@ SOURCES += main.cpp \
     realduck.cpp \
     rubberduck.cpp \
     woodenduck.cpp \
+    decorativeduck.cpp \
+    abstractduckfactory.cpp \
     ducksrategy.cpp \
-    decorativeduck.cpp
+    decorativeduckfactory.cpp \
+    duckfactory.cpp \
+    flock.cpp
 
 DISTFILES += \
     Strategy.pro.user \
@@ -27,5 +31,9 @@ HEADERS += \
     realduck.h \
     rubberduck.h \
     woodenduck.h \
-    decorativeduck.h
+    decorativeduck.h \
+    abstractduckfactory.h \
+    decorativeduckfactory.h \
+    duckfactory.h \
+    flock.h
 
