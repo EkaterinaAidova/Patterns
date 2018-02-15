@@ -12,8 +12,6 @@ int main()
     vector <Duck*> ducks;
     AbstractDuckFactory* decDucksFactory = new DecorativeDuckFactory();
     AbstractDuckFactory* normDucksFactory = new DuckFactory();
-
-
 	for (int i = 0; i < 10; i++)
 	{
         switch (i%3)
@@ -42,10 +40,12 @@ int main()
     for (auto duck : ducks)
     {
         auto d = dynamic_cast<DecorativeDuck*>(duck);
-        if (d!=nullptr)
-        krya += d->getCount();
+        if (d != nullptr)
+        {
+            krya += d->getCount();
+        }
 
     }
-    std::cout << "\nnumber of quaks = "<< krya << std::endl;
+    std::cout << "Count of quaks = " << krya << std::endl;
 
 }
