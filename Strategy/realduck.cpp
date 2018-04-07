@@ -6,17 +6,13 @@ RealDuck::RealDuck()
 
 }
 
-RealDuck::RealDuck(DuckStrategy *strat):Duck(strat)
+void RealDuck::quack()
 {
-}
-RealDuck::~RealDuck()
-{
+    std::cout << "quack" << std::endl;
 }
 
-void RealDuck::useStrategy()
+void RealDuck::fly()
 {
-    std::cout << "it is real duck and it can:" << std::endl;
-    strategy->showOptions();
+    std::cout << "I'm flying" << std::endl;
 }
-
 

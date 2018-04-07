@@ -7,8 +7,8 @@ class RealDuck: public Duck
 public:
 	RealDuck();
     ~RealDuck();
-    RealDuck(DuckStrategy* strat);
-    virtual void useStrategy();
+   virtual void quack();
+   virtual void fly();
 };
 #endif //REALDUCK_H
 
