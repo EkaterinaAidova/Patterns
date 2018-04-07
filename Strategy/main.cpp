@@ -1,51 +1,78 @@
 #include <iostream>
 #include <vector>
 #include "duck.h"
-#include "decorativeduck.h"
-#include "abstractduckfactory.h"
-#include "duckfactory.h"
-#include "decorativeduckfactory.h"
+#include "realduck.h"
+#include "turkey.h"
+#include "realturkey.h"
+#include "duckaddapter.h"
+#include "turkeyaddapter.h"
 using namespace std;
 
 int main()
 {
     vector <Duck*> ducks;
-    AbstractDuckFactory* decDucksFactory = new DecorativeDuckFactory();
-    AbstractDuckFactory* normDucksFactory = new DuckFactory();
-	for (int i = 0; i < 10; i++)
-	{
-        switch (i%3)
-		{
-		case 0:
-            ducks.push_back(decDucksFactory->createRealDuck());
-            ducks.push_back(normDucksFactory->createRealDuck());
-			break;
-		case 1:
-            ducks.push_back(decDucksFactory->createWoodenDuck());
-            ducks.push_back(normDucksFactory->createWoodenDuck());
-			break;
-		case 2:
-            ducks.push_back(decDucksFactory->createRubberDuck());
-            ducks.push_back(normDucksFactory->createRubberDuck());
-			break;
-		}
-	}
-
-    for (auto duck : ducks)
+    for (int i = 0; i < 5; i++)
     {
-        duck->useStrategy();
-
-    }
-    int krya=0;
-    for (auto duck : ducks)
-    {
-        auto d = dynamic_cast<DecorativeDuck*>(duck);
-        if (d != nullptr)
+        auto r = rand()%2;
+        if(r)
         {
-            krya += d->getCount();
+         ducks.push_back(new RealDuck());
         }
-
+        else
+        {
+         ducks.push_back(new TurkeyAddapter(new RealTurkey()));
+        }
     }
-    std::cout << "Count of quaks = " << krya << std::endl;
+
+
+    vector <Turkey*> turkeys;
+    for (int i = 0; i < 5; i++)
+    {
+        auto r = rand()%2;
+        if(r)
+        {
+         turkeys.push_back(new RealTurkey());
+        }
+        else
+        {
+         turkeys.push_back(new DuckAddapter(new RealDuck()));
+        }
+    }
+   std::cout << "ducks:" << std::endl;
+   int quack = 0;
+   int gobble = 0;
+   for (auto duck : ducks)
+   {
+       duck->quack();
+       duck->fly();
+       auto d = dynamic_cast<TurkeyAddapter*>(duck);
+       if (d != nullptr)
+       {
+           gobble += 1;
+       }
+       else
+       {
+           quack +=1;
+       }
+   }
+   std::cout << "turkey:" << std::endl;
+   for (auto turkey : turkeys)
+   {
+       turkey->gobble();
+       turkey->fly();
+       auto d = dynamic_cast<DuckAddapter*>(turkey);
+       if (d != nullptr)
+       {
+           quack += 1;
+       }
+       else
+       {
+           gobble +=1;
+       }
+
+
+   }
+   std::cout << "Count of quaks = " << quack << std::endl;
+   std::cout << "Count of gobble = " << gobble << std::endl;
 
 }

@@ -3,20 +3,14 @@ CONFIG += console c++11
 CONFIG -= app_bundle
 CONFIG -= qt
 
-SOURCES += main.cpp \
+SOURCES += \
     duck.cpp \
-    realduckstrategy.cpp \
-    woodenstrategy.cpp \
-    rubberstrategy.cpp \
     realduck.cpp \
-    rubberduck.cpp \
-    woodenduck.cpp \
-    decorativeduck.cpp \
-    abstractduckfactory.cpp \
-    ducksrategy.cpp \
-    decorativeduckfactory.cpp \
-    duckfactory.cpp \
-    flock.cpp
+    duckaddapter.cpp \
+    turkey.cpp \
+    realturkey.cpp \
+    turkeyaddapter.cpp \
+    main.cpp
 
 DISTFILES += \
     Strategy.pro.user \
@@ -24,16 +18,9 @@ DISTFILES += \
 
 HEADERS += \
     duck.h \
-    realduckstrategy.h \
-    woodenstrategy.h \
-    rubberstrategy.h \
-    duckstrategy.h \
     realduck.h \
-    rubberduck.h \
-    woodenduck.h \
-    decorativeduck.h \
-    abstractduckfactory.h \
-    decorativeduckfactory.h \
-    duckfactory.h \
-    flock.h
+    duckaddapter.h \
+    turkey.h \
+    realturkey.h \
+    turkeyaddapter.h
 
